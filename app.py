@@ -52,7 +52,7 @@ def ask_openrouter(user_message: str) -> str:
         "Content-Type": "application/json",
     }
     payload = {
-        "model": "google/gemini-2.0-flash-exp:free",  # 免費模型
+        "model": "google/gemma-4-31b",  # 免費模型
         "messages": [
             {
                 "role": "system",
