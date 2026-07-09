@@ -3,7 +3,7 @@ from fastapi import FastAPI, Request, HTTPException
 from linebot.v3 import WebhookHandler
 from linebot.v3.exceptions import InvalidSignatureError
 from linebot.v3.messaging import Configuration, ApiClient, MessagingApi, ReplyMessageRequest, TextMessage
-# 修正處 1：正確引入 LINE v3 的 MessageEvent (訊息事件)
+# 修正處：正確引入 LINE v3 的 MessageEvent
 from linebot.v3.webhooks import MessageEvent
 
 app = FastAPI()
@@ -26,7 +26,7 @@ async def handle_callback(request: Request):
         raise HTTPException(status_code=400, detail="Invalid signature")
     return 'OK'
 
-# 修正處 2：正確監聽 MessageEvent，並篩選出其中的 TextMessage
+# 修正處：正確監聽 MessageEvent，並篩選出其中的 TextMessage
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_message = event.message.text
